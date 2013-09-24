@@ -35,7 +35,7 @@ class Api_MessageController extends Lja_Controller_Action_Api {
 		Lja_Log::i()->debug($xml);
 
 		try {
-			$data = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA)
+			$data = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
 
 			switch ($data->MsgType) {
 				case 'text':			//	文本消息
