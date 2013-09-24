@@ -12,6 +12,7 @@ class Lja_Weixin_Message_Handler_Event extends Lja_Weixin_Message_Handler_Base {
 				$this->_processSubscribe();
 				break;
 			case 'unsubscribe':
+				$this->_processUbsubscribe();
 				break;
 		}
 	}
@@ -32,6 +33,17 @@ class Lja_Weixin_Message_Handler_Event extends Lja_Weixin_Message_Handler_Base {
 	}
 
 	private function _processUbsubscribe() {
+		$xml = $this->response(array(
+				'ToUserName' => $this->msg->FromUserName,
+				'FromUserName' => $this->msg->ToUserName,
+				'CreateTime' => time(),
+				'MsgType' => 'text',
+				'Content' => '非常感谢'
+				));
 
+		header('Content-Type: text/xml; charset=utf-8');
+		header('Content-Length: '.strlen($xml));
+		echo $xml;
+		exit(0);
 	}
 }
