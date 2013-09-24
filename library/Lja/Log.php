@@ -35,6 +35,10 @@ class Lja_Log
 		
 		return self::$instance;
 	}
+
+	public static function &i() {
+		return self::getInstance();
+	}
 	
 	/**
 	 * 写入日志到文件系统
