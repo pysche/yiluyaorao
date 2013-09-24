@@ -31,8 +31,24 @@ class Api_MessageController extends Lja_Controller_Action_Api {
 	}
 
 	protected function processMessage() {
-		$body = $this->getRequest()->getRawBody();
-		Lja_Log::i()->debug($body);
+		$xml = $this->getRequest()->getRawBody();
+		Lja_Log::i()->debug($xml);
+
+		try {
+			$data = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA)
+
+			switch ($data->MsgType) {
+				case 'text':			//	文本消息
+				case 'image':			//	图片消息
+				case 'location':		//	地理位置消息
+				case 'event':			//	事件消息
+				case 'link':			//	链接消息
+					$handler = &Lja_Weixin_Message_Handler::factory($data->MsgType);
+					break;				
+			}
+		} catch (Exception $e) {
+			Lja_Log::i()->exception($e);
+		}
 
 		die("OK");
 	}
@@ -46,5 +62,9 @@ class Api_MessageController extends Lja_Controller_Action_Api {
 		$sign = Lja_Weixin::sign($timestamp, $nonce);
 
 		return $sign==$signature;
+	}
+
+	protected function parseXml($xml) {
+
 	}
 }
