@@ -22,8 +22,7 @@ class Lja_Weixin_Message_Handler_Event extends Lja_Weixin_Message_Handler_Base {
 				'FromUserName' => $this->msg->ToUserName,
 				'CreateTime' => time(),
 				'MsgType' => 'text',
-				'Content' => '一路妖娆感谢您的关注',
-				'FuncFlag' => '0'
+				'Content' => '一路妖娆感谢您的关注'
 				));
 
 		header('Content-Type: text/xml; charset=utf-8');
