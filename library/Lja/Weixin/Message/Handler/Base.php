@@ -12,12 +12,12 @@ class Lja_Weixin_Message_Handler_Base {
 	}
 
 	protected function response($arr) {
-		$xml = "<xml>\n";
+		$xml = "<xml>";
 
 		foreach ($arr as $k=>$v) {
 			$xml .= '<'.$k.'>';
 			$xml .= is_numeric($v) ? $v : '<![CDATA['.$v.']]';
-			$xml .= '</'.$k.'>'."\n";
+			$xml .= '</'.$k.'>';
 		}
 
 		$xml .= "</xml>";
