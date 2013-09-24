@@ -44,6 +44,7 @@ class Api_MessageController extends Lja_Controller_Action_Api {
 				case 'event':			//	事件消息
 				case 'link':			//	链接消息
 					$handler = &Lja_Weixin_Message_Handler::factory($data->MsgType);
+					$handler->process();
 					break;				
 			}
 		} catch (Exception $e) {
