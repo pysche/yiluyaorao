@@ -15,7 +15,9 @@ class Lja_Weixin_Message_Handler_Base {
 		$xml = "<xml>\n";
 
 		foreach ($arr as $k=>$v) {
-			$xml .= '<'.$k.'>'.'<![CDATA['.$v.']]'.'</'.$k.'>'."\n";
+			$xml .= '<'.$k.'>';
+			$xml .= is_numeric($v) ? $v : '<![CDATA['.$v.']]';
+			$xml .= '</'.$k.'>'."\n";
 		}
 
 		$xml .= "</xml>";
