@@ -31,7 +31,7 @@ class Api_MessageController extends Lja_Controller_Action_Api {
 	}
 
 	protected function processMessage() {
-		$body = $this->getRequest()->getRayBody();
+		$body = $this->getRequest()->getRawBody();
 		Lja_Log::i()->debug($body);
 
 		die("OK");
