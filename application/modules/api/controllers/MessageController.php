@@ -43,7 +43,7 @@ class Api_MessageController extends Lja_Controller_Action_Api {
 				case 'location':		//	地理位置消息
 				case 'event':			//	事件消息
 				case 'link':			//	链接消息
-					$handler = &Lja_Weixin_Message_Handler::factory($data->MsgType);
+					$handler = &Lja_Weixin_Message_Handler::factory($data);
 					$handler->process();
 					break;				
 			}
