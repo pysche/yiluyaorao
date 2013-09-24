@@ -8,6 +8,6 @@ class Api_MessageController extends Lja_Controller_Action_Api {
 		$nonce = $this->getRequest()->getParam('nonce', '');			//	随机数
 		$echostr = $this->getRequest()->getParam('echostr', '');		//	随机字符串
 
-		die('ok<HR>');
+		die($echostr);
 	}
 }
