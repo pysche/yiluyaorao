@@ -18,13 +18,16 @@ class Lja_Weixin_Message_Handler_Event extends Lja_Weixin_Message_Handler_Base {
 	}
 
 	private function _processSubscribe() {
-		$xml = $this->response(array(
-				'ToUserName' => $this->msg->FromUserName,
-				'FromUserName' => $this->msg->ToUserName,
-				'CreateTime' => time(),
-				'MsgType' => 'text',
-				'Content' => '一路妖娆感谢您的关注'
-				));
+        $xml = "<xml>
+					<ToUserName><![CDATA[%s]]></ToUserName>
+					<FromUserName><![CDATA[%s]]></FromUserName>
+					<CreateTime>%s</CreateTime>
+					<MsgType><![CDATA[%s]]></MsgType>
+					<Content><![CDATA[%s]]></Content>
+					<FuncFlag>0</FuncFlag>
+					</xml>";  
+		$xml = sprintf($xml, $this->msg->FromUserName, $this->msg->ToUserName, time(), 'text', '感谢您的关注');
+		Lja_Log::i()->debug($xml);
 
 		header('Content-Type: text/xml; charset=utf-8');
 		header('Content-Length: '.strlen($xml));
@@ -33,14 +36,17 @@ class Lja_Weixin_Message_Handler_Event extends Lja_Weixin_Message_Handler_Base {
 	}
 
 	private function _processUbsubscribe() {
-		$xml = $this->response(array(
-				'ToUserName' => $this->msg->FromUserName,
-				'FromUserName' => $this->msg->ToUserName,
-				'CreateTime' => time(),
-				'MsgType' => 'text',
-				'Content' => '非常感谢'
-				));
-
+        $xml = "<xml>
+					<ToUserName><![CDATA[%s]]></ToUserName>
+					<FromUserName><![CDATA[%s]]></FromUserName>
+					<CreateTime>%s</CreateTime>
+					<MsgType><![CDATA[%s]]></MsgType>
+					<Content><![CDATA[%s]]></Content>
+					<FuncFlag>0</FuncFlag>
+					</xml>";  
+		$xml = sprintf($xml, $this->msg->FromUserName, $this->msg->ToUserName, time(), 'text', '非常感谢');
+		Lja_Log::i()->debug($xml);
+		
 		header('Content-Type: text/xml; charset=utf-8');
 		header('Content-Length: '.strlen($xml));
 		echo $xml;
