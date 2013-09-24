@@ -8,7 +8,8 @@ class Api_MessageController extends Lja_Controller_Action_Api {
 		$nonce = $this->getRequest()->getParam('nonce', '');			//	随机数
 		$echostr = $this->getRequest()->getParam('echostr', '');		//	随机字符串
 
-		Lja_Log::i()->debug($signature.'-'.$timestamp.'-'.$nonce.'-'.$echostr.'-'.Lja_Weixin::sign($timestamp, $nonce));
-		die($echostr);
+		$sign = Lja_Weixin::sign($timestamp, $nonce);
+		
+		die($sign==$signature ? $echostr : 'forbidden');
 	}
 }
