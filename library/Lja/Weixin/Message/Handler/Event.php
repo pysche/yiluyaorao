@@ -18,15 +18,12 @@ class Lja_Weixin_Message_Handler_Event extends Lja_Weixin_Message_Handler_Base {
 	}
 
 	private function _processSubscribe() {
-        $xml = "<xml>
-					<ToUserName><![CDATA[%s]]></ToUserName>
-					<FromUserName><![CDATA[%s]]></FromUserName>
-					<CreateTime>%s</CreateTime>
-					<MsgType><![CDATA[%s]]></MsgType>
-					<Content><![CDATA[%s]]></Content>
-					<FuncFlag>0</FuncFlag>
-					</xml>";  
-		$xml = sprintf($xml, $this->msg->FromUserName, $this->msg->ToUserName, time(), 'text', '您好，欢迎关注“一路妖娆**苏州外贸”的微信帐号！本店淘宝店铺网址为：http://shop33487592.taobao.com/');
+		$xml = new Lja_Weixin_Message_Structure_Text();
+		$xml->ToUserName = $this->msg->FromUserName;
+		$xml->FromUserName = $this->msg->ToUserName;
+		$xml->CreateTime = time();
+		$xml->Content = '您好，欢迎关注“一路妖娆**苏州外贸”的微信帐号！本店淘宝店铺网址为：http://shop33487592.taobao.com/';
+
 		Lja_Log::i()->debug($xml);
 
 		header('Content-Type: text/xml; charset=utf-8');
@@ -36,15 +33,12 @@ class Lja_Weixin_Message_Handler_Event extends Lja_Weixin_Message_Handler_Base {
 	}
 
 	private function _processUbsubscribe() {
-        $xml = "<xml>
-					<ToUserName><![CDATA[%s]]></ToUserName>
-					<FromUserName><![CDATA[%s]]></FromUserName>
-					<CreateTime>%s</CreateTime>
-					<MsgType><![CDATA[%s]]></MsgType>
-					<Content><![CDATA[%s]]></Content>
-					<FuncFlag>0</FuncFlag>
-					</xml>";  
-		$xml = sprintf($xml, $this->msg->FromUserName, $this->msg->ToUserName, time(), 'text', '非常感谢');
+		$xml = new Lja_Weixin_Message_Structure_Text();
+		$xml->ToUserName = $this->msg->FromUserName;
+		$xml->FromUserName = $this->msg->ToUserName;
+		$xml->CreateTime = time();
+		$xml->Content = '非常感谢';
+		
 		Lja_Log::i()->debug($xml);
 		
 		header('Content-Type: text/xml; charset=utf-8');
