@@ -2,7 +2,7 @@
 
 class Lja_Weixin_Message_Handler_Text extends Lja_Weixin_Message_Handler_Base {
 	protected $type = 'text';
-	
+
 	public function process() {
 		switch (trim($this->msg->Content)) {
 			case '1':
@@ -15,6 +15,8 @@ class Lja_Weixin_Message_Handler_Text extends Lja_Weixin_Message_Handler_Base {
 				$this->helpResponse();
 				break;
 		}
+
+		parent::process();
 	}
 
 	protected function helpResponse()
