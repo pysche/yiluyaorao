@@ -29,11 +29,17 @@ class Lja_Weixin_Message_Handler_Text extends Lja_Weixin_Message_Handler_Base {
 
 	protected function getShopAddress()
 	{
-		$this->structure->Content = '店铺地址是： http://shop33487592.taobao.com/';
+		$this->structure = &self::initStructure('link', $this->msg);
+		$this->structure->Title = '一路妖娆';
+		$this->structure->Description = '一路妖娆的淘宝店铺地址';
+		$this->structure->Url = 'http://shop33487592.taobao.com/';
 	}
 
 	protected function getGalleryAddress()
 	{
-		$this->structure->Content = '相册地址是： http://mara.ipbfans.org/';
+		$this->structure = &self::initStructure('link', $this->msg);
+		$this->structure->Title = '一路妖娆';
+		$this->structure->Description = '一路妖娆的相册地址';
+		$this->structure->Url = 'http://mara.ipbfans.org/';
 	}
 }

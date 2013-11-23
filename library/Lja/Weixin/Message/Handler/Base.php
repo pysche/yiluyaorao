@@ -7,18 +7,23 @@ class Lja_Weixin_Message_Handler_Base {
 
 	public function __construct($msg) {
 		$this->msg = $msg;
+		$this->structure = &self::initStructure($this->type, $this->msg);
+	}
 
-		$structureClass = 'Lja_Weixin_Message_Structure_'.ucfirst(strtolower($this->type));
-		$this->structure = new $structureClass();
+	protected function &initStructure($type, $msg) {
+		$structureClass = 'Lja_Weixin_Message_Structure_'.ucfirst(strtolower($type));
+		$structure = new $structureClass();
 
 		try {
-			$this->structure->FromUserName = $this->msg->ToUserName;
-			$this->structure->ToUserName = $this->msg->FromUserName;
-			$this->structure->MsgType = ucfirst(strtolower($this->type));
-			$this->structure->MsgId = $this->msg->MsgId;
+			$structure->FromUserName = $msg->ToUserName;
+			$structure->ToUserName = $msg->FromUserName;
+			$structure->MsgType = ucfirst(strtolower($type));
+			$structure->MsgId = $msg->MsgId;
 		} catch (Exception $e) {
 
 		}
+
+		return $structure;
 	}
 
 	public function process() {
