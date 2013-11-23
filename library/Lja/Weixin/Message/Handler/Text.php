@@ -24,37 +24,16 @@ class Lja_Weixin_Message_Handler_Text extends Lja_Weixin_Message_Handler_Base {
 		$content = "回复 1 获取店铺地址\n";
 		$content .= "回复 2 获取相册地址\n";
 
-		$this->response(array(
-			'ToUserName' => $this->msg->FromUserName,
-			'FromUserName' => $this->msg->ToUserName,
-			'CreateTime' => time(),
-			'MsgType' => 'text',
-			'Content' => $content,
-			'MsgId' => $this->msg->MsgId
-			));
+		$this->structure->Content = $content;
 	}
 
 	protected function getShopAddress()
 	{
-		$this->response(array(
-			'ToUserName' => $this->msg->FromUserName,
-			'FromUserName' => $this->msg->ToUserName,
-			'CreateTime' => time(),
-			'MsgType' => 'text',
-			'Content' => '店铺地址是： http://shop33487592.taobao.com/',
-			'MsgId' => $this->msg->MsgId
-			));
+		$this->structure->Content = '店铺地址是： http://shop33487592.taobao.com/';
 	}
 
 	protected function getGalleryAddress()
 	{
-		$this->response(array(
-			'ToUserName' => $this->msg->FromUserName,
-			'FromUserName' => $this->msg->ToUserName,
-			'CreateTime' => time(),
-			'MsgType' => 'text',
-			'Content' => '相册地址是： http://mara.ipbfans.org/',
-			'MsgId' => $this->msg->MsgId
-			));
+		$this->structure->Content = '相册地址是： http://mara.ipbfans.org/';
 	}
 }
