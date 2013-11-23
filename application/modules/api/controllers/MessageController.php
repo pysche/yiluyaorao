@@ -49,9 +49,9 @@ class Api_MessageController extends Lja_Controller_Action_Api {
 			}
 		} catch (Exception $e) {
 			Lja_Log::i()->exception($e);
-		}
 
-		die("OK");
+			die("OK");
+		}
 	}
 
 	protected function validateSign() {

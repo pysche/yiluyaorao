@@ -1,6 +1,7 @@
 <?php
 
 class Lja_Weixin_Message_Handler_Event extends Lja_Weixin_Message_Handler_Base {
+	protected $type = 'event';
 	
 	public function __construct($msg) {
 		parent::__construct($msg);
