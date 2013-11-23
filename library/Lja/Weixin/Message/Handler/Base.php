@@ -22,6 +22,8 @@ class Lja_Weixin_Message_Handler_Base {
 
 		$xml .= "</xml>";
 
+		Lja_Log::i()->send($xml);
+
 		return $xml;
 	}
 }

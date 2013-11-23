@@ -32,7 +32,7 @@ class Api_MessageController extends Lja_Controller_Action_Api {
 
 	protected function processMessage() {
 		$xml = $this->getRequest()->getRawBody();
-		Lja_Log::i()->debug($xml);
+		Lja_Log::i()->receive($xml);
 
 		try {
 			$data = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
