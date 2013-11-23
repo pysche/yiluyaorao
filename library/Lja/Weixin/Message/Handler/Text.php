@@ -27,7 +27,7 @@ class Lja_Weixin_Message_Handler_Text extends Lja_Weixin_Message_Handler_Base {
 			'CreateTime' => time(),
 			'MsgType' => 'text',
 			'Content' => $content,
-			'MsgId' => '1234567'
+			'MsgId' => $this->msg->MsgId
 			));
 	}
 
@@ -39,7 +39,7 @@ class Lja_Weixin_Message_Handler_Text extends Lja_Weixin_Message_Handler_Base {
 			'CreateTime' => time(),
 			'MsgType' => 'text',
 			'Content' => '店铺地址是： http://shop33487592.taobao.com/',
-			'MsgId' => '1234567'
+			'MsgId' => $this->msg->MsgId
 			));
 	}
 
@@ -51,7 +51,7 @@ class Lja_Weixin_Message_Handler_Text extends Lja_Weixin_Message_Handler_Base {
 			'CreateTime' => time(),
 			'MsgType' => 'text',
 			'Content' => '相册地址是： http://mara.ipbfans.org/',
-			'MsgId' => '1234567'
+			'MsgId' => $this->msg->MsgId
 			));
 	}
 }
